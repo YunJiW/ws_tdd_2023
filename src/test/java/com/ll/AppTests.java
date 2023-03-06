@@ -92,5 +92,27 @@ public class AppTests {
 
     }
 
+    @Test
+    @DisplayName("목록을 입력시 현재 가지고있는 목록을 반환한다.")
+    public void t7(){
+        String rs = AppTestRunner.run("""
+                등록
+                현재를 사랑하라.
+                작자미상
+                등록
+                과거에 집작하지 마라.
+                작자미상
+                목록
+                """);
+
+        assertThat(rs)
+                .contains("번호 /")
+                .contains("작가 /")
+                .contains(" 명언")
+                .contains("2 / 작자미상 / 과거에 집작하지 마라.")
+                .contains("1 / 작자미상 / 현재를 사랑하라.");
+
+    }
+
 
 }
